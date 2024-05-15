@@ -18,13 +18,14 @@ target_compile_options(tutorial_compiler_flags INTERFACE
 configure_file(QC4QuikConfig.h.in QC4QuikConfig.h)
 
 # Add subdirectories
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}\\src\\base" Base)
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src/base" Base)
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src/math" ComplexLib)
 
 # Build executable
 add_executable(QC4Quik main.cpp)
 
 # Link subdirs
-target_link_libraries(QC4Quik PUBLIC Base tutorial_compiler_flags)
+target_link_libraries(QC4Quik PUBLIC ComplexLib Base tutorial_compiler_flags)
 
 target_include_directories(QC4Quik PUBLIC
                             "${PROJECT_BINARY_DIR}"
